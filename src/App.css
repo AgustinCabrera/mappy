@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.container{
+background-color: rgb(10, 220, 253);
+display:grid;
+grid-template-columns: 1fr 1fr 1fr;
+
+
+
+}

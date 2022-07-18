@@ -1,0 +1,6 @@
+.sidebar{
+background-color: rgb(238, 236, 181);
+height: 100vh;
+grid-column-start: 1;
+grid-row-start: 1;
+}

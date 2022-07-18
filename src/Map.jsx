@@ -1,22 +1,34 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+import './Map.css'
 const options = {
   zoomControlOptions: {
     position:'right-center' ,
   }
 }
-function MyComponent() {
+
+function parseLocation(location){
+const [latitud,longitud]=location.split(',');
+return {
+  latitud:Number(latitud),
+  longitud:Number(longitud)
+}
+}
+
+
+function MyComponent(props) {
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_MAPKEY
   })
   const containerStyle = {
-    width: '400px',
-    height: '400px'
+    position: "relative",
+    width: "100%",
+    height: "100%"
   };
-  
+  const {latitud, longitud} = parseLocation(props.location)
   const center = {
-    lat: -3.745,
-    lng: -38.523
+    lat: latitud || 42.10268,
+    lng: longitud || -72.58676
   };
 
 
@@ -29,7 +41,8 @@ function MyComponent() {
         // do something with map Instance
     //  }
    // )
-    return <GoogleMap
+    return <GoogleMap mapContainerClassName='map-container' 
+     
       options={options}
       mapContainerStyle={containerStyle}
        center={center}
