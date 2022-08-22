@@ -1,6 +1,7 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import './Map.css'
+import Polygon from './components/polygon'
 const options = {
   zoomControlOptions: {
     position:'right-center' ,
@@ -33,14 +34,6 @@ function MyComponent(props) {
 
 
   const renderMap = () => {
-    // wrapping to a function is useful in case you want to access `window.google`
-    // to eg. setup options or create latLng object, it won't be available otherwise
-    // feel free to render directly if you don't need that
-    //const onLoad = React.useCallback(
-     // function onLoad (mapInstance) {
-        // do something with map Instance
-    //  }
-   // )
     return <GoogleMap mapContainerClassName='map-container' 
      
       options={options}
@@ -49,9 +42,7 @@ function MyComponent(props) {
        zoom={10}
    //   onLoad={onLoad}
     >
-      {
-        // ...Your map components
-      }
+    <Polygon></Polygon>
     </GoogleMap>
   }
 
